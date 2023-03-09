@@ -8,8 +8,51 @@
     x:DataType="this:MainPage">
 
 
-    <VerticalStackLayout BindingContext="{Binding Student}">
+    <VerticalStackLayout>
 
+        <CollectionView ItemsSource="{Binding Students}" EmptyView="ריק">
+            <CollectionView.ItemsLayout>
+                <LinearItemsLayout ItemSpacing="12"
+                                   Orientation="Vertical"/>
+            </CollectionView.ItemsLayout>
+            <CollectionView.ItemTemplate>
+                <DataTemplate  x:DataType="Models:Student">
+                    <SwipeView>
+                        <SwipeView.LeftItems>
+                            <SwipeItems>
+                                <SwipeItem
+                                    BackgroundColor="Red"
+                                    Clicked="SwipeItem_Clicked"
+                                    IconImageSource="deletebutton.svg"
+                                    Text="Delete"/>
+                            </SwipeItems>
+                        </SwipeView.LeftItems>
+                        <SwipeView.RightItems>
+                            <SwipeItems>
+                                <SwipeItem
+                                    BackgroundColor="Red"
+                                    Clicked="SwipeItem_Clicked"
+                                    IconImageSource="deletebutton.svg"
+                                    Text="Delete"/>
+                            </SwipeItems>
+                        </SwipeView.RightItems>
+                        <Grid RowDefinitions="*,*,*" ColumnDefinitions="auto, auto"
+                              Padding="10"
+                              HeightRequest="400" WidthRequest="400">
+                            <Image Grid.Column="0" Grid.RowSpan="3" 
+                                   Source="{Binding Image}"
+                                   Aspect="AspectFill"/>
+                            <Label Grid.Column="1" Grid.Row="0"
+                                   Text="{Binding Name}"/>
+                            <Label Grid.Column="1" Grid.Row="1"
+                                   Text="{Binding BirthDate}"/>
+                            <Label Grid.Column="1" Grid.Row="2"
+                                   Text="{Binding Age}"/>
+                        </Grid>
+                    </SwipeView>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
         <Button
             Margin="20"
             BorderWidth="3"
@@ -17,8 +60,5 @@
             HeightRequest="40"
             Text="טען תלמידים"
             WidthRequest="120" />
-        
     </VerticalStackLayout>
-
-
 </ContentPage>
