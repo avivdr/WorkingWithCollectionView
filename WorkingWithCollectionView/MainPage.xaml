@@ -10,14 +10,14 @@
 
     <VerticalStackLayout>
 
-        <CollectionView ItemsSource="{Binding Students}" EmptyView="ריק">
+        <CollectionView ItemsSource="{Binding Students}" EmptyView="ריק" x:Name="colView" SelectionMode="Single" >
             <CollectionView.ItemsLayout>
                 <LinearItemsLayout ItemSpacing="12"
                                    Orientation="Vertical"/>
             </CollectionView.ItemsLayout>
             <CollectionView.ItemTemplate>
                 <DataTemplate  x:DataType="Models:Student">
-                    <SwipeView>
+                    <!--<SwipeView>
                         <SwipeView.LeftItems>
                             <SwipeItems>
                                 <SwipeItem
@@ -35,7 +35,12 @@
                                     IconImageSource="deletebutton.svg"
                                     Text="Delete"/>
                             </SwipeItems>
-                        </SwipeView.RightItems>
+                        </SwipeView.RightItems>-->
+                    <HorizontalStackLayout Padding="10">
+                        <Button BackgroundColor="Red"
+                                    Clicked="Delete_Clicked"
+                                    ImageSource="deletebutton.svg"
+                                    Text="Delete" Margin="20"/>
                         <Grid RowDefinitions="*,*,*" ColumnDefinitions="auto, auto"
                               Padding="10"
                               HeightRequest="400" WidthRequest="400">
@@ -49,7 +54,11 @@
                             <Label Grid.Column="1" Grid.Row="2"
                                    Text="{Binding Age}"/>
                         </Grid>
-                    </SwipeView>
+                        <Button BackgroundColor="Blue"
+                                    Clicked="Copy_Clicked"
+                                    Text="Delete" Margin="20"/>
+                    </HorizontalStackLayout>                    
+                    <!--</SwipeView>-->
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>
@@ -57,7 +66,7 @@
             Margin="20"
             BorderWidth="3"
             Clicked="Button_Clicked"
-            HeightRequest="40"
+            HeightRequest="50"
             Text="טען תלמידים"
             WidthRequest="120" />
     </VerticalStackLayout>

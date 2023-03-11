@@ -53,12 +53,18 @@ public partial class MainPage : ContentPage
     {
         LoadStudents();
         OnPropertyChanged(nameof(Students));
-
     }
 
-    private void SwipeItem_Clicked(object sender, EventArgs e)
+    private void Delete_Clicked(object sender, EventArgs e)
     {
+        Student s = colView.SelectedItem as Student;
+        Students.Remove(s);
+    }
 
+    private void Copy_Clicked(object sender, EventArgs e)
+    {
+        Student s = colView.SelectedItem as Student;
+        Students.Add(s);
     }
 }
 
